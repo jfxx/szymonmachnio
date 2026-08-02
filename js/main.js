@@ -1,3 +1,4 @@
+/* ── Theme ── */
 const themeToggle = document.getElementById("theme-toggle");
 const page = document.getElementById("page");
 const header = document.getElementById("header");
@@ -18,7 +19,8 @@ function getPreferredTheme() {
   if (stored === "dark" || stored === "light") {
     return stored;
   }
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  // Light is the default theme
+  return "light";
 }
 
 function toggleTheme() {
@@ -32,6 +34,10 @@ applyTheme(getPreferredTheme());
 
 themeToggle.addEventListener("click", toggleTheme);
 
+/* ── i18n ── */
+initI18n();
+
+/* ── Blur animation replay ── */
 function replayBlurAnimation() {
   page.style.animation = "none";
   void page.offsetWidth;

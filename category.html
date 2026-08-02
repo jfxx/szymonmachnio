@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Galeria kategorii — Szymon Machnio Fotografia">
-  <title>Kategoria — Szymon Machnio</title>
+  <title>Szymon Machnio - Kategorie</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -105,48 +106,44 @@
     }
   </style>
 </head>
+
 <body>
   <svg class="noise-filter" aria-hidden="true">
     <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch"/>
-      <feColorMatrix type="saturate" values="0"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" />
+      <feColorMatrix type="saturate" values="0" />
     </filter>
   </svg>
 
   <header class="header" id="header">
-    <nav class="nav nav--left" aria-label="Nawigacja">
+    <nav class="nav nav--left" data-i18n-aria="aria.nav" aria-label="Nawigacja">
       <a href="categories.html" class="btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:1rem;height:1rem;margin-right:0.4rem" aria-hidden="true">
-          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          style="width:1rem;height:1rem;margin-right:0.4rem" aria-hidden="true">
+          <path d="M19 12H5M12 5l-7 7 7 7" />
         </svg>
-        Kategorie
+        <span data-i18n="category.backToCategories">Kategorie</span>
       </a>
     </nav>
 
     <div class="nav nav--right">
-      <a
-        href="https://instagram.com"
-        class="btn btn--icon"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-      >
+      <a href="https://www.instagram.com/szymon_machnie_photo/" class="btn btn--icon" target="_blank"
+        rel="noopener noreferrer" data-i18n-aria="aria.instagram" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-          <rect x="3" y="3" width="18" height="18" rx="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
         </svg>
       </a>
-      <button
-        type="button"
-        class="btn btn--icon"
-        id="theme-toggle"
-        aria-label="Odwróć motyw"
-      >
+      <button type="button" class="btn btn--icon" id="theme-toggle" data-i18n-aria="aria.theme"
+        aria-label="Przełącz motyw">
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="9" fill="currentColor"/>
-          <path d="M12 3 A9 9 0 0 1 12 21 Z" class="theme-toggle-contrast"/>
+          <circle cx="12" cy="12" r="9" fill="currentColor" />
+          <path d="M12 3 A9 9 0 0 1 12 21 Z" class="theme-toggle-contrast" />
         </svg>
+      </button>
+      <button type="button" class="btn btn--lang" id="lang-toggle" data-i18n-aria="aria.lang" aria-label="Zmień język">
+        <span class="lang-toggle__label">EN</span>
       </button>
     </div>
   </header>
@@ -163,56 +160,54 @@
       <div class="category-nav">
         <a href="categories.html" class="btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M19 12H5M12 5l-7 7 7 7"/>
+            <path d="M19 12H5M12 5l-7 7 7 7" />
           </svg>
-          Wszystkie kategorie
+          <span data-i18n="category.allCategories">Wszystkie kategorie</span>
         </a>
-        <a href="index.html" class="btn">
-          Strona główna
-        </a>
+        <a href="index.html" class="btn" data-i18n="category.mainPage">Strona główna</a>
       </div>
     </main>
 
     <footer class="footer">
-      <p class="footer__copy">&copy; 2026 Szymon Machnio</p>
+      <p class="footer__copy" data-i18n="footer.copy">&copy; 2026 Szymon Machnio</p>
     </footer>
   </div>
 
-  <!-- Enhanced Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Powiększone zdjęcie">
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" data-i18n-aria="aria.lightbox"
+    aria-label="Powiększone zdjęcie">
     <div class="lightbox__toolbar">
       <span class="lightbox__counter" id="lightbox-counter"></span>
-      <button type="button" class="lightbox__btn" id="lightbox-zoom" aria-label="Powiększ">
+      <button type="button" class="lightbox__btn" id="lightbox-fullscreen" data-i18n-aria="aria.fullscreen"
+        aria-label="Pełny ekran">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+          <path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3M16 21h3a2 2 0 002-2v-3" />
         </svg>
       </button>
-      <button type="button" class="lightbox__btn" id="lightbox-fullscreen" aria-label="Pełny ekran">
+      <button type="button" class="lightbox__btn" id="lightbox-close" data-i18n-aria="aria.close" aria-label="Zamknij">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-          <path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3M16 21h3a2 2 0 002-2v-3"/>
-        </svg>
-      </button>
-      <button type="button" class="lightbox__btn" id="lightbox-close" aria-label="Zamknij">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-          <path d="M18 6L6 18M6 6l12 12"/>
+          <path d="M18 6L6 18M6 6l12 12" />
         </svg>
       </button>
     </div>
-    <button type="button" class="lightbox__nav lightbox__prev" id="lightbox-prev" aria-label="Poprzednie">
+    <button type="button" class="lightbox__nav lightbox__prev" id="lightbox-prev" data-i18n-aria="aria.prev"
+      aria-label="Poprzednie">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="M15 18l-6-6 6-6"/>
+        <path d="M15 18l-6-6 6-6" />
       </svg>
     </button>
     <div class="lightbox__img-wrap" id="lightbox-wrap">
       <img class="lightbox__img" id="lightbox-img" src="" alt="">
     </div>
-    <button type="button" class="lightbox__nav lightbox__next" id="lightbox-next" aria-label="Następne">
+    <button type="button" class="lightbox__nav lightbox__next" id="lightbox-next" data-i18n-aria="aria.next"
+      aria-label="Następne">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="M9 18l6-6-6-6"/>
+        <path d="M9 18l6-6-6-6" />
       </svg>
     </button>
   </div>
 
+  <script src="js/i18n.js"></script>
   <script>
     /* ── Theme ── */
     const storageKey = "szymon-machnio-theme";
@@ -226,7 +221,7 @@
     function getPreferredTheme() {
       const stored = localStorage.getItem(storageKey);
       if (stored === "dark" || stored === "light") return stored;
-      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      return "light";
     }
     applyTheme(getPreferredTheme());
     document.getElementById("theme-toggle").addEventListener("click", () => {
@@ -236,55 +231,58 @@
       localStorage.setItem(storageKey, next);
     });
 
+    /* ── i18n ── */
+    initI18n();
+
     /* ── Ordinal helper ── */
     const ordinals = [
-      "first","second","third","fourth","fifth","sixth","seventh","eighth",
-      "ninth","tenth","eleventh","twelfth","thirteenth","fourteenth",
-      "fifteenth","sixteenth","seventeenth","eighteenth","nineteenth","twentieth"
+      "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth",
+      "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth",
+      "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentieth"
     ];
 
     /* ── Category Data ── */
     const basePath = "assets/images/Works/";
     const categories = {
       arctic: {
-        title: "Arctic",
-        subtitle: "Fotografia z arktycznych krajobrazów",
+        titleKey: "cat.arctic.name",
+        subtitleKey: "cat.arctic.subtitle",
         folder: "arctic",
         count: 18
       },
       astro: {
-        title: "Astro",
-        subtitle: "Astrofotografia — gwiazdy i nocne niebo",
+        titleKey: "cat.astro.name",
+        subtitleKey: "cat.astro.subtitle",
         folder: "astro",
         count: 9
       },
       automotive: {
-        title: "Automotive",
-        subtitle: "Fotografia motoryzacyjna",
+        titleKey: "cat.automotive.name",
+        subtitleKey: "cat.automotive.subtitle",
         folder: "automotive",
         count: 19
       },
       blue: {
-        title: "Blue",
-        subtitle: "Błękitne tonacje i nastroje",
+        titleKey: "cat.blue.name",
+        subtitleKey: "cat.blue.subtitle",
         folder: "blue",
         count: 11
       },
       landscapes: {
-        title: "Landscapes",
-        subtitle: "Krajobrazy i przyroda",
+        titleKey: "cat.landscapes.name",
+        subtitleKey: "cat.landscapes.subtitle",
         folder: "landscapes",
         count: 14
       },
       portraits: {
-        title: "Portraits",
-        subtitle: "Fotografia portretowa",
+        titleKey: "cat.portraits.name",
+        subtitleKey: "cat.portraits.subtitle",
         folder: "portraits",
         count: 7
       },
       other: {
-        title: "Other",
-        subtitle: "Pozostałe prace",
+        titleKey: "cat.other.name",
+        subtitleKey: "cat.other.subtitle",
         folder: "other",
         count: 16
       }
@@ -293,11 +291,11 @@
     /* ── Special file lists for folders with non-standard naming ── */
     const specialFiles = {
       astro: [
-        "first","second","third","fourth","fifth","sixth","eighth","nineth","tenth"
+        "first", "second", "third", "fourth", "fifth", "sixth", "eighth", "nineth", "tenth"
       ],
       landscapes: [
-        "first","second","third","fourth","fifth","sixth","seventh","eighth",
-        "twelfth","thirteenth","fourteenth","fifteenth","sixteenth","eleventh"
+        "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth",
+        "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth", "eleventh"
       ]
     };
 
@@ -313,17 +311,18 @@
     const imageSources = [];
 
     if (cat) {
-      titleEl.textContent = cat.title;
-      subtitleEl.textContent = cat.subtitle;
-      document.title = cat.title + " — Szymon Machnio";
+      titleEl.textContent = t(cat.titleKey);
+      subtitleEl.textContent = t(cat.subtitleKey);
+      document.title = t(cat.titleKey) + " — Szymon Machnio";
 
+      const catTitle = t(cat.titleKey);
       const fileList = specialFiles[catKey]
         ? specialFiles[catKey]
         : ordinals.slice(0, cat.count);
 
       fileList.forEach((name, i) => {
         const src = basePath + cat.folder + "/" + name + ".webp";
-        const alt = cat.title + " " + (i + 1);
+        const alt = catTitle + " " + (i + 1);
         imageSources.push({ src, alt });
 
         const item = document.createElement("div");
@@ -347,37 +346,47 @@
         });
       });
     } else {
-      titleEl.textContent = "Nie znaleziono kategorii";
-      subtitleEl.textContent = "Sprawdź adres URL lub wróć do kategorii.";
+      titleEl.textContent = t("category.notFound");
+      subtitleEl.textContent = t("category.notFoundDesc");
     }
 
-    /* ── Enhanced Lightbox ── */
+    // Update title and subtitle on lang change
+    function updateCategoryTexts() {
+      if (cat) {
+        titleEl.textContent = t(cat.titleKey);
+        subtitleEl.textContent = t(cat.subtitleKey);
+        document.title = t(cat.titleKey) + " — Szymon Machnio";
+      } else {
+        titleEl.textContent = t("category.notFound");
+        subtitleEl.textContent = t("category.notFoundDesc");
+      }
+    }
+
+    document.addEventListener("langchange", updateCategoryTexts);
+
+    /* ── Lightbox ── */
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
     const lightboxWrap = document.getElementById("lightbox-wrap");
     const lightboxClose = document.getElementById("lightbox-close");
     const lightboxPrev = document.getElementById("lightbox-prev");
     const lightboxNext = document.getElementById("lightbox-next");
-    const lightboxZoom = document.getElementById("lightbox-zoom");
     const lightboxFullscreen = document.getElementById("lightbox-fullscreen");
     const lightboxCounter = document.getElementById("lightbox-counter");
 
     let currentIndex = 0;
-    let isZoomed = false;
 
     function openLightbox(index) {
       currentIndex = index;
       updateLightboxImage();
       lightbox.classList.add("lightbox--open");
       document.body.style.overflow = "hidden";
-      resetZoom();
     }
 
     function closeLightbox() {
       lightbox.classList.remove("lightbox--open");
       document.body.style.overflow = "";
-      resetZoom();
-      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => { });
     }
 
     function updateLightboxImage() {
@@ -391,71 +400,21 @@
     }
 
     function showPrev() {
-      resetZoom();
       currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
       updateLightboxImage();
     }
 
     function showNext() {
-      resetZoom();
       currentIndex = (currentIndex + 1) % imageSources.length;
       updateLightboxImage();
     }
 
-    /* ── Zoom ── */
-    function toggleZoom() {
-      if (isZoomed) {
-        resetZoom();
-      } else {
-        isZoomed = true;
-        lightboxWrap.classList.add("lightbox__img-wrap--zoomed");
-        lightboxImg.style.width = lightboxImg.naturalWidth + "px";
-        lightboxImg.style.height = lightboxImg.naturalHeight + "px";
-        const ww = lightboxWrap.clientWidth;
-        const wh = lightboxWrap.clientHeight;
-        lightboxWrap.scrollLeft = (lightboxImg.offsetWidth - ww) / 2;
-        lightboxWrap.scrollTop = (lightboxImg.offsetHeight - wh) / 2;
-      }
-    }
-
-    function resetZoom() {
-      isZoomed = false;
-      lightboxWrap.classList.remove("lightbox__img-wrap--zoomed");
-      lightboxImg.style.width = "";
-      lightboxImg.style.height = "";
-      lightboxWrap.scrollLeft = 0;
-      lightboxWrap.scrollTop = 0;
-    }
-
-    /* ── Zoom drag ── */
-    let isDragging = false;
-    let dragStartX = 0, dragStartY = 0;
-    let scrollStartX = 0, scrollStartY = 0;
-
-    lightboxWrap.addEventListener("mousedown", (e) => {
-      if (!isZoomed) return;
-      isDragging = true;
-      dragStartX = e.clientX;
-      dragStartY = e.clientY;
-      scrollStartX = lightboxWrap.scrollLeft;
-      scrollStartY = lightboxWrap.scrollTop;
-      e.preventDefault();
-    });
-
-    window.addEventListener("mousemove", (e) => {
-      if (!isDragging) return;
-      lightboxWrap.scrollLeft = scrollStartX - (e.clientX - dragStartX);
-      lightboxWrap.scrollTop = scrollStartY - (e.clientY - dragStartY);
-    });
-
-    window.addEventListener("mouseup", () => { isDragging = false; });
-
     /* ── Fullscreen ── */
     function toggleFullscreen() {
       if (!document.fullscreenElement) {
-        lightbox.requestFullscreen().catch(() => {});
+        lightbox.requestFullscreen().catch(() => { });
       } else {
-        document.exitFullscreen().catch(() => {});
+        document.exitFullscreen().catch(() => { });
       }
     }
 
@@ -463,7 +422,6 @@
     lightboxClose.addEventListener("click", (e) => { e.stopPropagation(); closeLightbox(); });
     lightboxPrev.addEventListener("click", (e) => { e.stopPropagation(); showPrev(); });
     lightboxNext.addEventListener("click", (e) => { e.stopPropagation(); showNext(); });
-    lightboxZoom.addEventListener("click", (e) => { e.stopPropagation(); toggleZoom(); });
     lightboxFullscreen.addEventListener("click", (e) => { e.stopPropagation(); toggleFullscreen(); });
 
     lightbox.addEventListener("click", (e) => {
@@ -477,20 +435,17 @@
         case "ArrowLeft": showPrev(); break;
         case "ArrowRight": showNext(); break;
         case "f": case "F": toggleFullscreen(); break;
-        case "z": case "Z": toggleZoom(); break;
       }
     });
 
     /* ── Touch swipe ── */
     let touchStartX = 0, touchStartY = 0;
     lightboxWrap.addEventListener("touchstart", (e) => {
-      if (isZoomed) return;
       touchStartX = e.changedTouches[0].clientX;
       touchStartY = e.changedTouches[0].clientY;
     }, { passive: true });
 
     lightboxWrap.addEventListener("touchend", (e) => {
-      if (isZoomed) return;
       const dx = e.changedTouches[0].clientX - touchStartX;
       const dy = e.changedTouches[0].clientY - touchStartY;
       if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
@@ -499,4 +454,5 @@
     }, { passive: true });
   </script>
 </body>
+
 </html>

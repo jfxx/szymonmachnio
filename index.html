@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portfolio fotograficzne Szymona Machnio">
-  <title>Szymon Machnio — Fotografia</title>
+  <title>Szymon Machnio — Photography</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,26 +22,29 @@
   </svg>
 
   <header class="header" id="header">
-    <nav class="nav nav--left" aria-label="Nawigacja główna">
-      <a href="#works" class="btn">Works</a>
-      <a href="#about" class="btn">About me</a>
-      <a href="#contact" class="btn">Contact</a>
+    <nav class="nav nav--left" data-i18n-aria="aria.nav" aria-label="Nawigacja główna">
+      <a href="#works" class="btn" data-i18n="nav.works">Prace</a>
+      <a href="#about" class="btn" data-i18n="nav.about">O mnie</a>
+      <a href="#contact" class="btn" data-i18n="nav.contact">Kontakt</a>
     </nav>
 
     <div class="nav nav--right">
       <a href="https://www.instagram.com/szymon_machnie_photo/" class="btn btn--icon" target="_blank"
-        rel="noopener noreferrer" aria-label="Instagram">
+        rel="noopener noreferrer" data-i18n-aria="aria.instagram" aria-label="Instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <rect x="3" y="3" width="18" height="18" rx="5" />
           <circle cx="12" cy="12" r="4" />
           <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
         </svg>
       </a>
-      <button type="button" class="btn btn--icon" id="theme-toggle" aria-label="Odwróć motyw">
+      <button type="button" class="btn btn--icon" id="theme-toggle" data-i18n-aria="aria.theme" aria-label="Przełącz motyw">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="12" r="9" fill="currentColor" />
           <path d="M12 3 A9 9 0 0 1 12 21 Z" class="theme-toggle-contrast" />
         </svg>
+      </button>
+      <button type="button" class="btn btn--lang" id="lang-toggle" data-i18n-aria="aria.lang" aria-label="Zmień język">
+        <span class="lang-toggle__label">EN</span>
       </button>
     </div>
   </header>
@@ -50,7 +53,7 @@
 
     <main>
       <section class="hero" id="home">
-        <h1 class="hero__title">SZYMON MACHNIO</h1>
+        <h1 class="hero__title" data-i18n="hero.title">SZYMON MACHNIO</h1>
         <div class="scroll-hint" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M12 5v14M6 13l6 6 6-6" />
@@ -59,7 +62,7 @@
       </section>
 
       <section class="section section--full" id="works">
-        <h2 class="section__title">Works</h2>
+        <h2 class="section__title" data-i18n="works.title">Prace</h2>
         <div class="gallery">
           <div class="gallery__item" role="button" tabindex="0" aria-label="Powiększ zdjęcie 1">
             <img src="assets/images/Featured Works/first.webp" alt="Featured work 1" loading="lazy">
@@ -76,7 +79,7 @@
         </div>
         <div class="section__cta">
           <a href="categories.html" class="btn btn--cta">
-            Wszystkie kategorie
+            <span data-i18n="works.cta">Wszystkie kategorie</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
@@ -85,17 +88,17 @@
       </section>
 
       <section class="section section--centered section--full" id="about">
-        <h2 class="section__title">About me</h2>
-        <p class="section__text">
-          Fotograf specjalizujący się w portretach, dokumentacji i wizualnych opowieściach.
-          Każdy kadr to świadoma decyzja — światło, kompozycja i moment.
+        <h2 class="section__title" data-i18n="about.title">O mnie</h2>
+        <p class="section__text" data-i18n="about.text">
+          Fotograf specjalizujący się w portretach, fotografii dokumentalnej i wizualnym opowiadaniu historii.
+          Każde zdjęcie to świadoma decyzja — światło, kompozycja i czas.
         </p>
       </section>
 
       <div class="section-divider"></div>
 
       <section class="section section--centered section--full" id="contact">
-        <h2 class="section__title">Contact</h2>
+        <h2 class="section__title" data-i18n="contact.title">Kontakt</h2>
         <p class="section__text">
           <a href="mailto:szymonmachniofoto@gmail.com">szymonmachniofoto@gmail.com</a>
         </p>
@@ -103,25 +106,25 @@
     </main>
 
     <footer class="footer">
-      <p class="footer__copy">&copy; 2026 Szymon Machnio</p>
+      <p class="footer__copy" data-i18n="footer.copy">&copy; 2026 Szymon Machnio</p>
     </footer>
   </div>
 
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Powiększone zdjęcie">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" data-i18n-aria="aria.lightbox" aria-label="Powiększone zdjęcie">
     <div class="lightbox__toolbar">
       <span class="lightbox__counter" id="lightbox-counter"></span>
-      <button type="button" class="lightbox__btn" id="lightbox-fullscreen" aria-label="Pełny ekran">
+      <button type="button" class="lightbox__btn" id="lightbox-fullscreen" data-i18n-aria="aria.fullscreen" aria-label="Pełny ekran">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3M16 21h3a2 2 0 002-2v-3" />
         </svg>
       </button>
-      <button type="button" class="lightbox__btn" id="lightbox-close" aria-label="Zamknij">
+      <button type="button" class="lightbox__btn" id="lightbox-close" data-i18n-aria="aria.close" aria-label="Zamknij">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <path d="M18 6L6 18M6 6l12 12" />
         </svg>
       </button>
     </div>
-    <button type="button" class="lightbox__nav lightbox__prev" id="lightbox-prev" aria-label="Poprzednie">
+    <button type="button" class="lightbox__nav lightbox__prev" id="lightbox-prev" data-i18n-aria="aria.prev" aria-label="Poprzednie">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M15 18l-6-6 6-6" />
       </svg>
@@ -129,13 +132,14 @@
     <div class="lightbox__img-wrap" id="lightbox-wrap">
       <img class="lightbox__img" id="lightbox-img" src="" alt="">
     </div>
-    <button type="button" class="lightbox__nav lightbox__next" id="lightbox-next" aria-label="Następne">
+    <button type="button" class="lightbox__nav lightbox__next" id="lightbox-next" data-i18n-aria="aria.next" aria-label="Następne">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M9 18l6-6-6-6" />
       </svg>
     </button>
   </div>
 
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 

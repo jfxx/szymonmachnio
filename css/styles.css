@@ -170,6 +170,21 @@ body::before {
   fill: var(--contrast);
 }
 
+.btn--lang {
+  min-width: var(--btn-icon);
+  height: var(--btn-icon);
+  padding: 0 0.5rem;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-size: clamp(0.7rem, 1.8vw, 0.82rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lang-toggle__label {
+  pointer-events: none;
+}
+
 .hero {
   position: relative;
   display: flex;
