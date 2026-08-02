@@ -17,101 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <style>
-    .category-hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 45vh;
-      padding: clamp(7rem, 14vw, 11rem) clamp(1.5rem, 6vw, 4rem) clamp(2rem, 6vw, 3rem);
-    }
-
-    .category-hero__title {
-      font-family: "Inter", system-ui, -apple-system, sans-serif;
-      font-size: clamp(2rem, 8vw, 5rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      text-align: center;
-    }
-
-    .category-hero__subtitle {
-      font-family: "Area", system-ui, -apple-system, sans-serif;
-      font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-top: 1rem;
-      text-align: center;
-    }
-
-    .category-gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: clamp(0.5rem, 1.5vw, 1rem);
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 clamp(1.5rem, 6vw, 4rem) clamp(3rem, 8vw, 6rem);
-    }
-
-    .category-gallery__item {
-      aspect-ratio: 4 / 5;
-      background: var(--bg-btn);
-      border-radius: 2px;
-      overflow: hidden;
-      border: 3px solid var(--gallery-border);
-      cursor: pointer;
-      transition: background-color 0.35s ease, border-color 0.35s ease;
-    }
-
-    .category-gallery__item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .category-gallery__item:hover img {
-      transform: scale(1.03);
-    }
-
-    .category-nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      padding: 0 clamp(1.5rem, 6vw, 4rem) clamp(3rem, 6vw, 5rem);
-      flex-wrap: wrap;
-    }
-
-    .category-nav .btn {
-      gap: 0.5rem;
-    }
-
-    .category-nav svg {
-      width: 1rem;
-      height: 1rem;
-    }
-
-    @media (max-width: 1024px) {
-      .category-gallery {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .category-gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .category-gallery {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css?v=1">
 </head>
 
 <body>
@@ -190,9 +96,7 @@
     </main>
 
     <footer class="footer">
-      <p class="footer__copy" data-i18n="footer.copy">&copy;
-        <script>document.write(new Date().getFullYear())</script> Szymon Machnio
-      </p>
+      <p class="footer__copy" id="footer-year" data-i18n="footer.copy">&copy; Szymon Machnio</p>
     </footer>
   </div>
 
@@ -230,108 +134,30 @@
     </button>
   </div>
 
-  <script src="js/i18n.js"></script>
+  <script src="js/i18n.js?v=1"></script>
+  <script src="js/theme.js?v=1"></script>
+  <script src="js/categories-data.js?v=1"></script>
+  <script src="js/lightbox.js?v=1"></script>
   <script>
-    /* ── Theme ── */
-    const storageKey = "szymon-machnio-theme";
-    function applyTheme(theme) {
-      if (theme === "dark") {
-        document.documentElement.setAttribute("data-theme", "dark");
-      } else {
-        document.documentElement.removeAttribute("data-theme");
-      }
-    }
-    function getPreferredTheme() {
-      const stored = localStorage.getItem(storageKey);
-      if (stored === "dark" || stored === "light") return stored;
-      return "light";
-    }
-    applyTheme(getPreferredTheme());
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-      const isDark = document.documentElement.hasAttribute("data-theme");
-      const next = isDark ? "light" : "dark";
-      applyTheme(next);
-      localStorage.setItem(storageKey, next);
-    });
-
     /* ── i18n ── */
     initI18n();
 
-    /* ── Ordinal helper ── */
-    const ordinals = [
-      "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth",
-      "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth",
-      "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentieth"
-    ];
-
-    /* ── Category Data ── */
-    const basePath = "assets/images/Works/";
-    const categories = {
-      arctic: {
-        titleKey: "cat.arctic.name",
-        subtitleKey: "cat.arctic.subtitle",
-        folder: "arctic",
-        count: 18
-      },
-      astro: {
-        titleKey: "cat.astro.name",
-        subtitleKey: "cat.astro.subtitle",
-        folder: "astro",
-        count: 9
-      },
-      automotive: {
-        titleKey: "cat.automotive.name",
-        subtitleKey: "cat.automotive.subtitle",
-        folder: "automotive",
-        count: 19
-      },
-      blue: {
-        titleKey: "cat.blue.name",
-        subtitleKey: "cat.blue.subtitle",
-        folder: "blue",
-        count: 11
-      },
-      landscapes: {
-        titleKey: "cat.landscapes.name",
-        subtitleKey: "cat.landscapes.subtitle",
-        folder: "landscapes",
-        count: 14
-      },
-      portraits: {
-        titleKey: "cat.portraits.name",
-        subtitleKey: "cat.portraits.subtitle",
-        folder: "portraits",
-        count: 7
-      },
-      other: {
-        titleKey: "cat.other.name",
-        subtitleKey: "cat.other.subtitle",
-        folder: "other",
-        count: 16
+    /* ── Footer year ── */
+    (function () {
+      var el = document.querySelector(".footer__copy");
+      if (el) {
+        el.textContent = "\u00A9 " + new Date().getFullYear() + " Szymon Machnio";
       }
-    };
-
-    /* ── Special file lists for folders with non-standard naming ── */
-    const specialFiles = {
-      astro: [
-        "first", "second", "third", "fourth", "fifth", "sixth", "eighth", "nineth", "tenth"
-      ],
-      landscapes: [
-        "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth",
-        "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth", "eleventh"
-      ]
-    };
+    })();
 
     /* ── Render Gallery ── */
     const params = new URLSearchParams(window.location.search);
     const catKey = params.get("cat");
-    const cat = categories[catKey];
+    const cat = CATEGORIES[catKey];
 
     const titleEl = document.getElementById("category-title");
     const subtitleEl = document.getElementById("category-subtitle");
     const galleryEl = document.getElementById("category-gallery");
-
-    const imageSources = [];
 
     if (cat) {
       titleEl.textContent = t(cat.titleKey);
@@ -339,14 +165,12 @@
       document.title = t(cat.titleKey) + " — Szymon Machnio";
 
       const catTitle = t(cat.titleKey);
-      const fileList = specialFiles[catKey]
-        ? specialFiles[catKey]
-        : ordinals.slice(0, cat.count);
+      const fileList = getCategoryFileList(catKey);
 
       fileList.forEach((name, i) => {
-        const src = basePath + cat.folder + "/" + name + ".webp";
-        const src480 = basePath + cat.folder + "/" + name + "-480w.webp";
-        const src800 = basePath + cat.folder + "/" + name + "-800w.webp";
+        const src = CATEGORIES_BASE_PATH + cat.folder + "/" + name + ".webp";
+        const src480 = CATEGORIES_BASE_PATH + cat.folder + "/" + name + "-480w.webp";
+        const src800 = CATEGORIES_BASE_PATH + cat.folder + "/" + name + "-800w.webp";
         const alt = catTitle + " " + (i + 1);
         imageSources.push({ src, alt });
 
@@ -432,95 +256,6 @@
     }
 
     document.addEventListener("langchange", updateCategoryTexts);
-
-    /* ── Lightbox ── */
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const lightboxWrap = document.getElementById("lightbox-wrap");
-    const lightboxClose = document.getElementById("lightbox-close");
-    const lightboxPrev = document.getElementById("lightbox-prev");
-    const lightboxNext = document.getElementById("lightbox-next");
-    const lightboxFullscreen = document.getElementById("lightbox-fullscreen");
-    const lightboxCounter = document.getElementById("lightbox-counter");
-
-    let currentIndex = 0;
-
-    function openLightbox(index) {
-      currentIndex = index;
-      updateLightboxImage();
-      lightbox.classList.add("lightbox--open");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove("lightbox--open");
-      document.body.style.overflow = "";
-      if (document.fullscreenElement) document.exitFullscreen().catch(() => { });
-    }
-
-    function updateLightboxImage() {
-      const data = imageSources[currentIndex];
-      if (!data) return;
-      lightboxImg.src = data.src;
-      lightboxImg.alt = data.alt;
-      lightboxCounter.textContent = (currentIndex + 1) + " / " + imageSources.length;
-      lightboxPrev.style.display = imageSources.length > 1 ? "" : "none";
-      lightboxNext.style.display = imageSources.length > 1 ? "" : "none";
-    }
-
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
-      updateLightboxImage();
-    }
-
-    function showNext() {
-      currentIndex = (currentIndex + 1) % imageSources.length;
-      updateLightboxImage();
-    }
-
-    /* ── Fullscreen ── */
-    function toggleFullscreen() {
-      if (!document.fullscreenElement) {
-        lightbox.requestFullscreen().catch(() => { });
-      } else {
-        document.exitFullscreen().catch(() => { });
-      }
-    }
-
-    /* ── Event Listeners ── */
-    lightboxClose.addEventListener("click", (e) => { e.stopPropagation(); closeLightbox(); });
-    lightboxPrev.addEventListener("click", (e) => { e.stopPropagation(); showPrev(); });
-    lightboxNext.addEventListener("click", (e) => { e.stopPropagation(); showNext(); });
-    lightboxFullscreen.addEventListener("click", (e) => { e.stopPropagation(); toggleFullscreen(); });
-
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox || e.target === lightboxWrap) closeLightbox();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (!lightbox.classList.contains("lightbox--open")) return;
-      switch (e.key) {
-        case "Escape": closeLightbox(); break;
-        case "ArrowLeft": showPrev(); break;
-        case "ArrowRight": showNext(); break;
-        case "f": case "F": toggleFullscreen(); break;
-      }
-    });
-
-    /* ── Touch swipe ── */
-    let touchStartX = 0, touchStartY = 0;
-    lightboxWrap.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].clientX;
-      touchStartY = e.changedTouches[0].clientY;
-    }, { passive: true });
-
-    lightboxWrap.addEventListener("touchend", (e) => {
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      const dy = e.changedTouches[0].clientY - touchStartY;
-      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
-        if (dx > 0) showPrev(); else showNext();
-      }
-    }, { passive: true });
   </script>
 </body>
 

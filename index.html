@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=1">
 </head>
 
 <body>
@@ -121,9 +121,7 @@
     </main>
 
     <footer class="footer">
-      <p class="footer__copy" data-i18n="footer.copy">&copy;
-        <script>document.write(new Date().getFullYear())</script> Szymon Machnio
-      </p>
+      <p class="footer__copy" id="footer-year" data-i18n="footer.copy">&copy; Szymon Machnio</p>
     </footer>
   </div>
 
@@ -160,32 +158,10 @@
     </button>
   </div>
 
-  <script src="js/i18n.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-      /* ── Email obfuscation — decode href on interaction ── */
-      (function () {
-        var el = document.getElementById('email-link');
-        if (!el) return;
-        var parts = ['szymonmachnio', 'foto', '@', 'gmail', '.com'];
-        var revealed = false;
-        function reveal() {
-          if (revealed) return;
-          revealed = true;
-          var addr = parts[0] + parts[1] + parts[2] + parts[3] + parts[4];
-          el.href = 'mailto:' + addr;
-        }
-        el.addEventListener('mouseenter', reveal);
-        el.addEventListener('focus', reveal);
-        el.addEventListener('touchstart', reveal, { passive: true });
-        el.addEventListener('click', function (e) {
-          reveal();
-          if (el.href.indexOf('mailto:') === -1) {
-            e.preventDefault();
-          }
-        });
-      })();
-  </script>
+  <script src="js/i18n.js?v=1"></script>
+  <script src="js/theme.js?v=1"></script>
+  <script src="js/lightbox.js?v=1"></script>
+  <script src="js/main.js?v=1"></script>
 </body>
 
 </html>

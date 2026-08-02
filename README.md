@@ -1,3 +1,13 @@
 # Szymon Machnio — Portfolio fotograficzne
 
-Podstawowa strona internetowa, mająca na celu przedstawić twórczość artysty.
+Portfolio fotograficzne Szymona Machnio — portrety, krajobrazy, astrofotografia i inne prace. Strona statyczna zbudowana bez frameworków ani bundlerów.
+
+## Technologie
+
+- **HTML5** — semantyczna struktura stron
+- **CSS3** — responsywny design, zmienne CSS, animacje
+- **Vanilla JavaScript** — theme toggle, lightbox, i18n (PL/EN)
+
+## Licencja
+
+Wszystkie zdjęcia © Szymon Machnio. Wszelkie prawa zastrzeżone.

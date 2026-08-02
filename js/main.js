@@ -1,41 +1,21 @@
-﻿/* ── Theme ── */
-const themeToggle = document.getElementById("theme-toggle");
+/* ── main.js — index.html specific logic ── */
+/* Theme and i18n are loaded via theme.js and i18n.js */
+/* Lightbox is loaded via lightbox.js */
+
 const page = document.getElementById("page");
-const header = document.getElementById("header");
 const scrollHint = document.querySelector(".scroll-hint");
 const hero = document.getElementById("home");
-const storageKey = "szymon-machnio-theme";
-
-function applyTheme(theme) {
-  if (theme === "dark") {
-    document.documentElement.setAttribute("data-theme", "dark");
-  } else {
-    document.documentElement.removeAttribute("data-theme");
-  }
-}
-
-function getPreferredTheme() {
-  const stored = localStorage.getItem(storageKey);
-  if (stored === "dark" || stored === "light") {
-    return stored;
-  }
-  // Light is the default theme
-  return "light";
-}
-
-function toggleTheme() {
-  const isDark = document.documentElement.hasAttribute("data-theme");
-  const next = isDark ? "light" : "dark";
-  applyTheme(next);
-  localStorage.setItem(storageKey, next);
-}
-
-applyTheme(getPreferredTheme());
-
-themeToggle.addEventListener("click", toggleTheme);
 
 /* ── i18n ── */
 initI18n();
+
+/* ── Footer year ── */
+(function () {
+  var el = document.querySelector(".footer__copy");
+  if (el) {
+    el.textContent = "\u00A9 " + new Date().getFullYear() + " Szymon Machnio";
+  }
+})();
 
 /* ── Blur animation replay ── */
 function replayBlurAnimation() {
@@ -83,19 +63,8 @@ window.addEventListener(
 
 updateOnScroll();
 
-/* ── Enhanced Lightbox ── */
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const lightboxWrap = document.getElementById("lightbox-wrap");
-const lightboxClose = document.getElementById("lightbox-close");
-const lightboxPrev = document.getElementById("lightbox-prev");
-const lightboxNext = document.getElementById("lightbox-next");
-const lightboxFullscreen = document.getElementById("lightbox-fullscreen");
-const lightboxCounter = document.getElementById("lightbox-counter");
+/* ── Gallery items → populate imageSources for lightbox ── */
 const galleryItems = document.querySelectorAll(".gallery__item");
-
-let currentIndex = 0;
-const imageSources = [];
 
 galleryItems.forEach((item, i) => {
   const img = item.querySelector("img");
@@ -114,115 +83,25 @@ galleryItems.forEach((item, i) => {
   });
 });
 
-function openLightbox(index) {
-  currentIndex = index;
-  updateLightboxImage();
-  lightbox.classList.add("lightbox--open");
-  document.body.style.overflow = "hidden";
-}
-
-function closeLightbox() {
-  lightbox.classList.remove("lightbox--open");
-  document.body.style.overflow = "";
-  exitFullscreenIfActive();
-}
-
-function updateLightboxImage() {
-  const data = imageSources[currentIndex];
-  if (!data) return;
-  lightboxImg.src = data.src;
-  lightboxImg.alt = data.alt;
-  lightboxCounter.textContent = (currentIndex + 1) + " / " + imageSources.length;
-  lightboxPrev.style.display = imageSources.length > 1 ? "" : "none";
-  lightboxNext.style.display = imageSources.length > 1 ? "" : "none";
-}
-
-function showPrev() {
-  currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
-  updateLightboxImage();
-}
-
-function showNext() {
-  currentIndex = (currentIndex + 1) % imageSources.length;
-  updateLightboxImage();
-}
-
-/* ── Fullscreen ── */
-function toggleFullscreen() {
-  if (!document.fullscreenElement) {
-    lightbox.requestFullscreen().catch(() => {});
-  } else {
-    document.exitFullscreen().catch(() => {});
+/* ── Email obfuscation — decode href on interaction ── */
+(function () {
+  var el = document.getElementById('email-link');
+  if (!el) return;
+  var parts = ['szymonmachnio', 'foto', '@', 'gmail', '.com'];
+  var revealed = false;
+  function reveal() {
+    if (revealed) return;
+    revealed = true;
+    var addr = parts[0] + parts[1] + parts[2] + parts[3] + parts[4];
+    el.href = 'mailto:' + addr;
   }
-}
-
-function exitFullscreenIfActive() {
-  if (document.fullscreenElement) {
-    document.exitFullscreen().catch(() => {});
-  }
-}
-
-/* ── Event Listeners ── */
-lightboxClose.addEventListener("click", (e) => {
-  e.stopPropagation();
-  closeLightbox();
-});
-
-lightboxPrev.addEventListener("click", (e) => {
-  e.stopPropagation();
-  showPrev();
-});
-
-lightboxNext.addEventListener("click", (e) => {
-  e.stopPropagation();
-  showNext();
-});
-
-lightboxFullscreen.addEventListener("click", (e) => {
-  e.stopPropagation();
-  toggleFullscreen();
-});
-
-lightbox.addEventListener("click", (event) => {
-  if (event.target === lightbox || event.target === lightboxWrap) {
-    closeLightbox();
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (!lightbox.classList.contains("lightbox--open")) return;
-
-  switch (event.key) {
-    case "Escape":
-      closeLightbox();
-      break;
-    case "ArrowLeft":
-      showPrev();
-      break;
-    case "ArrowRight":
-      showNext();
-      break;
-    case "f":
-    case "F":
-      toggleFullscreen();
-      break;
-  }
-});
-
-/* ── Touch swipe for mobile ── */
-let touchStartX = 0;
-let touchStartY = 0;
-
-lightboxWrap.addEventListener("touchstart", (e) => {
-  touchStartX = e.changedTouches[0].clientX;
-  touchStartY = e.changedTouches[0].clientY;
-}, { passive: true });
-
-lightboxWrap.addEventListener("touchend", (e) => {
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  const dy = e.changedTouches[0].clientY - touchStartY;
-  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
-    if (dx > 0) showPrev();
-    else showNext();
-  }
-}, { passive: true });
+  el.addEventListener('mouseenter', reveal);
+  el.addEventListener('focus', reveal);
+  el.addEventListener('touchstart', reveal, { passive: true });
+  el.addEventListener('click', function (e) {
+    reveal();
+    if (el.href.indexOf('mailto:') === -1) {
+      e.preventDefault();
+    }
+  });
+})();
