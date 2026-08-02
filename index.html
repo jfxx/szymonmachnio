@@ -21,12 +21,6 @@
 </head>
 
 <body>
-  <svg class="noise-filter" aria-hidden="true">
-    <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" />
-      <feColorMatrix type="saturate" values="0" />
-    </filter>
-  </svg>
 
   <header class="header" id="header">
     <nav class="nav nav--left" data-i18n-aria="aria.nav" aria-label="Nawigacja główna">
@@ -73,16 +67,28 @@
         <h2 class="section__title" data-i18n="works.title">Prace</h2>
         <div class="gallery">
           <div class="gallery__item" role="button" tabindex="0" aria-label="Powiększ zdjęcie 1">
-            <img src="assets/images/Featured-Works/first.webp" alt="Featured work 1" loading="lazy">
+            <img src="assets/images/Featured-Works/first.webp"
+              srcset="assets/images/Featured-Works/first-480w.webp 480w, assets/images/Featured-Works/first-800w.webp 800w, assets/images/Featured-Works/first.webp 1200w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              alt="Featured work 1" loading="lazy">
           </div>
           <div class="gallery__item" role="button" tabindex="0" aria-label="Powiększ zdjęcie 2">
-            <img src="assets/images/Featured-Works/second.webp" alt="Featured work 2" loading="lazy">
+            <img src="assets/images/Featured-Works/second.webp"
+              srcset="assets/images/Featured-Works/second-480w.webp 480w, assets/images/Featured-Works/second-800w.webp 800w, assets/images/Featured-Works/second.webp 1200w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              alt="Featured work 2" loading="lazy">
           </div>
           <div class="gallery__item" role="button" tabindex="0" aria-label="Powiększ zdjęcie 3">
-            <img src="assets/images/Featured-Works/third.webp" alt="Featured work 3" loading="lazy">
+            <img src="assets/images/Featured-Works/third.webp"
+              srcset="assets/images/Featured-Works/third-480w.webp 480w, assets/images/Featured-Works/third-800w.webp 800w, assets/images/Featured-Works/third.webp 1200w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              alt="Featured work 3" loading="lazy">
           </div>
           <div class="gallery__item" role="button" tabindex="0" aria-label="Powiększ zdjęcie 4">
-            <img src="assets/images/Featured-Works/fourth.webp" alt="Featured work 4" loading="lazy">
+            <img src="assets/images/Featured-Works/fourth.webp"
+              srcset="assets/images/Featured-Works/fourth-480w.webp 480w, assets/images/Featured-Works/fourth-800w.webp 800w, assets/images/Featured-Works/fourth.webp 1200w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              alt="Featured work 4" loading="lazy">
           </div>
         </div>
         <div class="section__cta">

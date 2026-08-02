@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 
 <head>
@@ -115,12 +115,7 @@
 </head>
 
 <body>
-  <svg class="noise-filter" aria-hidden="true">
-    <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" />
-      <feColorMatrix type="saturate" values="0" />
-    </filter>
-  </svg>
+
 
   <header class="header" id="header">
     <nav class="nav nav--left" data-i18n-aria="aria.nav" aria-label="Nawigacja">
@@ -350,6 +345,8 @@
 
       fileList.forEach((name, i) => {
         const src = basePath + cat.folder + "/" + name + ".webp";
+        const src480 = basePath + cat.folder + "/" + name + "-480w.webp";
+        const src800 = basePath + cat.folder + "/" + name + "-800w.webp";
         const alt = catTitle + " " + (i + 1);
         imageSources.push({ src, alt });
 
@@ -360,6 +357,8 @@
         item.setAttribute("aria-label", alt);
         const img = document.createElement("img");
         img.src = src;
+        img.srcset = src480 + " 480w, " + src800 + " 800w, " + src + " 1200w";
+        img.sizes = "(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw";
         img.alt = alt;
         img.loading = "lazy";
         img.addEventListener("error", function () {

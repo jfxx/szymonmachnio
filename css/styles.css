@@ -20,7 +20,7 @@
   --text: #111111;
   --text-muted: #333333;
   --contrast: #f2f0ec;
-  --grain-opacity: 0.055;
+
   --blur-duration: 0.75s;
   --gallery-border: var(--text);
   --header-pad: clamp(1.25rem, 3vw, 2rem);
@@ -36,7 +36,7 @@
   --text: #eae8e4;
   --text-muted: #c8c6c2;
   --contrast: #111111;
-  --grain-opacity: 0.07;
+
   --gallery-border: var(--text);
 }
 
@@ -53,24 +53,7 @@ body {
   transition: background-color 0.35s ease, color 0.35s ease;
 }
 
-.noise-filter {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: var(--grain-opacity);
-  filter: url(#grain);
-  background: var(--text);
-  transition: opacity 0.35s ease;
-}
 
 .page {
   position: relative;
