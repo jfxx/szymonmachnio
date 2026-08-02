@@ -1,4 +1,4 @@
-/* ── Theme ── */
+﻿/* ── Theme ── */
 const themeToggle = document.getElementById("theme-toggle");
 const page = document.getElementById("page");
 const header = document.getElementById("header");

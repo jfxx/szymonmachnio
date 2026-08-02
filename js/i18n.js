@@ -57,7 +57,7 @@ const TRANSLATIONS = {
     "cat.other.subtitle": "Inne prace",
 
     /* ── footer ── */
-    "footer.copy": "© 2026 Szymon Machnio",
+    "footer.copy": "© {YEAR} Szymon Machnio",
 
     /* ── aria ── */
     "aria.theme": "Przełącz motyw",
@@ -122,7 +122,7 @@ const TRANSLATIONS = {
     "cat.other.subtitle": "Other Works",
 
     /* ── footer ── */
-    "footer.copy": "© 2026 Szymon Machnio",
+    "footer.copy": "© {YEAR} Szymon Machnio",
 
     /* ── aria ── */
     "aria.theme": "Toggle theme",
@@ -162,12 +162,13 @@ function toggleLang() {
 
 function applyTranslations(lang) {
   const dict = TRANSLATIONS[lang] || TRANSLATIONS.pl;
+  const year = new Date().getFullYear();
 
   // Translate all elements with data-i18n attribute
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
     if (dict[key] !== undefined) {
-      el.textContent = dict[key];
+      el.textContent = dict[key].replace("{YEAR}", year);
     }
   });
 

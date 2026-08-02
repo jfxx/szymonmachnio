@@ -76,6 +76,8 @@ body::before {
   position: relative;
   z-index: 1;
   min-height: 100dvh;
+  will-change: filter, opacity;
+  transform: translateZ(0);
   animation: blur-reveal var(--blur-duration) cubic-bezier(0.33, 1, 0.68, 1) forwards;
 }
 
@@ -89,7 +91,7 @@ body::before {
     opacity: 0.85;
   }
   100% {
-    filter: blur(0);
+    filter: blur(0.01px);
     opacity: 1;
   }
 }

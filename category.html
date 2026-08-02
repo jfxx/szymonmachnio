@@ -5,8 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Galeria kategorii — Szymon Machnio Fotografia">
+  <meta property="og:title" content="Galeria — Szymon Machnio Photography">
+  <meta property="og:description" content="Przeglądaj galerię zdjęć Szymona Machnio — portrety, krajobrazy, astrofotografia i więcej.">
+  <meta property="og:image" content="assets/images/Featured-Works/first.webp">
+  <meta property="og:type" content="website">
   <title>Szymon Machnio - Kategorie</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon.png">
+  <link rel="manifest" href="manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800;900&display=swap" rel="stylesheet">
@@ -150,6 +156,25 @@
 
   <div class="page" id="page">
     <main>
+      <noscript>
+        <div style="text-align:center;padding:4rem 2rem;">
+          <h2 style="margin-bottom:1rem;">Wymagany JavaScript / JavaScript required</h2>
+          <p>Aby przeglądać galerię, włącz obsługę JavaScript w przeglądarce.</p>
+          <p style="margin-top:0.5rem;">To view the gallery, please enable JavaScript in your browser.</p>
+          <p style="margin-top:1.5rem;"><a href="categories.html">← Wróć do kategorii / Back to categories</a></p>
+          <hr style="margin:2rem auto;max-width:400px;border:none;border-top:1px solid #ccc;">
+          <p style="margin-bottom:1rem;">Galerie / Galleries:</p>
+          <ul style="list-style:none;padding:0;">
+            <li><a href="category.html?cat=arctic">Arktyka / Arctic</a></li>
+            <li><a href="category.html?cat=astro">Astro</a></li>
+            <li><a href="category.html?cat=automotive">Samochody / Automotive</a></li>
+            <li><a href="category.html?cat=blue">Niebiesko / Blue</a></li>
+            <li><a href="category.html?cat=landscapes">Krajobrazy / Landscapes</a></li>
+            <li><a href="category.html?cat=portraits">Portrety / Portraits</a></li>
+            <li><a href="category.html?cat=other">Inne / Other</a></li>
+          </ul>
+        </div>
+      </noscript>
       <section class="category-hero">
         <h1 class="category-hero__title" id="category-title">Kategoria</h1>
         <p class="category-hero__subtitle" id="category-subtitle"></p>
@@ -169,7 +194,7 @@
     </main>
 
     <footer class="footer">
-      <p class="footer__copy" data-i18n="footer.copy">&copy; 2026 Szymon Machnio</p>
+      <p class="footer__copy" data-i18n="footer.copy">&copy; <script>document.write(new Date().getFullYear())</script> Szymon Machnio</p>
     </footer>
   </div>
 
@@ -334,6 +359,14 @@
         img.src = src;
         img.alt = alt;
         img.loading = "lazy";
+        img.addEventListener("error", function () {
+          item.remove();
+          // Remove from imageSources so lightbox indexes stay correct
+          const idx = imageSources.findIndex(s => s.src === src);
+          if (idx !== -1) imageSources.splice(idx, 1);
+          // Re-bind click indexes after removal
+          rebindGalleryClicks();
+        });
         item.appendChild(img);
         galleryEl.appendChild(item);
 
@@ -345,9 +378,43 @@
           }
         });
       });
+
+      /* ── Inject JSON-LD structured data for SEO ── */
+      const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "ImageGallery",
+        "name": catTitle + " — Szymon Machnio Photography",
+        "description": t(cat.subtitleKey),
+        "author": {
+          "@type": "Person",
+          "name": "Szymon Machnio"
+        },
+        "image": imageSources.map(s => s.src)
+      };
+      const ldScript = document.createElement("script");
+      ldScript.type = "application/ld+json";
+      ldScript.textContent = JSON.stringify(jsonLd);
+      document.head.appendChild(ldScript);
     } else {
       titleEl.textContent = t("category.notFound");
       subtitleEl.textContent = t("category.notFoundDesc");
+    }
+
+    /* Re-bind gallery click events after an image is removed */
+    function rebindGalleryClicks() {
+      const items = galleryEl.querySelectorAll(".category-gallery__item");
+      items.forEach((item, i) => {
+        // Clone to remove old listeners
+        const newItem = item.cloneNode(true);
+        item.parentNode.replaceChild(newItem, item);
+        newItem.addEventListener("click", () => openLightbox(i));
+        newItem.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openLightbox(i);
+          }
+        });
+      });
     }
 
     // Update title and subtitle on lang change
