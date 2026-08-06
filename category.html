@@ -138,6 +138,7 @@
   <script src="js/theme.js?v=1"></script>
   <script src="js/categories-data.js?v=1"></script>
   <script src="js/lightbox.js?v=1"></script>
+  <script src="js/masonry.js?v=1"></script>
   <script>
     /* ── i18n ── */
     initI18n();
@@ -184,7 +185,7 @@
         img.srcset = src480 + " 480w, " + src800 + " 800w, " + src + " 1200w";
         img.sizes = "(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw";
         img.alt = alt;
-        img.loading = "lazy";
+        img.loading = "eager";
         img.addEventListener("error", function () {
           item.remove();
           // Remove from imageSources so lightbox indexes stay correct
@@ -221,6 +222,9 @@
       ldScript.type = "application/ld+json";
       ldScript.textContent = JSON.stringify(jsonLd);
       document.head.appendChild(ldScript);
+
+      /* ── Activate masonry layout ── */
+      var masonry = initMasonry(".category-gallery", ".category-gallery__item");
     } else {
       titleEl.textContent = t("category.notFound");
       subtitleEl.textContent = t("category.notFoundDesc");
@@ -241,6 +245,8 @@
           }
         });
       });
+      /* Recalculate masonry after item removal */
+      if (masonry) masonry.layout();
     }
 
     // Update title and subtitle on lang change

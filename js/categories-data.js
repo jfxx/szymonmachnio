@@ -2,7 +2,8 @@
 const ORDINALS = [
   "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth",
   "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth",
-  "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentieth"
+  "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentieth",
+  "twentyfirst", "twentysecond", "twentythird"
 ];
 
 const CATEGORIES_BASE_PATH = "assets/images/Works/";
@@ -24,13 +25,13 @@ const CATEGORIES = {
     titleKey: "cat.automotive.name",
     subtitleKey: "cat.automotive.subtitle",
     folder: "automotive",
-    count: 19
+    count: 23
   },
   blue: {
     titleKey: "cat.blue.name",
     subtitleKey: "cat.blue.subtitle",
     folder: "blue",
-    count: 11
+    count: 13
   },
   landscapes: {
     titleKey: "cat.landscapes.name",
