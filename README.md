@@ -4,10 +4,11 @@ Portfolio fotograficzne Szymona Machnio — portrety, krajobrazy, astrofotografi
 
 ## Technologie
 
-- **HTML5** — semantyczna struktura stron
-- **CSS3** — responsywny design, zmienne CSS, animacje
-- **Vanilla JavaScript** — theme toggle, lightbox, i18n (PL/EN)
+* **HTML5** — semantyczna struktura stron
+* **CSS3** — responsywny design, zmienne CSS, animacje
+* **Vanilla JavaScript** — theme toggle, lightbox, PL/EN
 
 ## Licencja
 
 Wszystkie zdjęcia © Szymon Machnio. Wszelkie prawa zastrzeżone.
+
