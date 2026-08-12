@@ -656,7 +656,7 @@ body {
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: clamp(0.75rem, 2vw, 1.25rem);
   max-width: 1200px;
   margin: 0 auto;

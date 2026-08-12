@@ -3,7 +3,7 @@ const ORDINALS = [
   "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth",
   "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth",
   "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentieth",
-  "twentyfirst", "twentysecond", "twentythird"
+  "twentyfirst", "twentysecond", "twentythird", "twentyfourth", "twentyfifth"
 ];
 
 const CATEGORIES_BASE_PATH = "assets/images/Works/";
@@ -19,13 +19,13 @@ const CATEGORIES = {
     titleKey: "cat.astro.name",
     subtitleKey: "cat.astro.subtitle",
     folder: "astro",
-    count: 9
+    count: 12
   },
   automotive: {
     titleKey: "cat.automotive.name",
     subtitleKey: "cat.automotive.subtitle",
     folder: "automotive",
-    count: 23
+    count: 25
   },
   blue: {
     titleKey: "cat.blue.name",
@@ -43,24 +43,37 @@ const CATEGORIES = {
     titleKey: "cat.portraits.name",
     subtitleKey: "cat.portraits.subtitle",
     folder: "portraits",
-    count: 7
+    count: 16
   },
   other: {
     titleKey: "cat.other.name",
     subtitleKey: "cat.other.subtitle",
     folder: "other",
-    count: 16
+    count: 20
+  },
+  interiors: {
+    titleKey: "cat.interiors.name",
+    subtitleKey: "cat.interiors.subtitle",
+    folder: "interiors",
+    count: 10
   }
 };
 
 /* Special file lists for folders with non-standard naming */
 const SPECIAL_FILES = {
   astro: [
-    "first", "second", "third", "fourth", "fifth", "sixth", "eighth", "nineth", "tenth"
+    "first", "second", "third", "fourth", "fifth", "sixth", "eighth", "nineth", "tenth",
+    "eleventh", "twelfth", "thirteenth"
+  ],
+  automotive: [
+    "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth",
+    "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth",
+    "fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth", "twentieth",
+    "twentyfirst", "twentysecond", "twentythird", "twenty-fourth", "twenty-fifth"
   ],
   landscapes: [
     "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth",
-    "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth", "eleventh"
+    "eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth"
   ]
 };
 

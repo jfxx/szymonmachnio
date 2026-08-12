@@ -46,6 +46,7 @@ const TRANSLATIONS = {
     "cat.landscapes.name": "Krajobrazy",
     "cat.portraits.name": "Portrety",
     "cat.other.name": "Inne",
+    "cat.interiors.name": "Wnętrza",
 
     /* ── category subtitles ── */
     "cat.arctic.subtitle": "Fotografia arktycznych krajobrazów",
@@ -55,6 +56,7 @@ const TRANSLATIONS = {
     "cat.landscapes.subtitle": "Krajobrazy i natura",
     "cat.portraits.subtitle": "Fotografia portretowa",
     "cat.other.subtitle": "Inne prace",
+    "cat.interiors.subtitle": "Fotografia wnętrz i architektury",
 
     /* ── footer ── */
     "footer.copy": "© {YEAR} Szymon Machnio",
@@ -111,6 +113,7 @@ const TRANSLATIONS = {
     "cat.landscapes.name": "Landscapes",
     "cat.portraits.name": "Portraits",
     "cat.other.name": "Other",
+    "cat.interiors.name": "Interiors",
 
     /* ── category subtitles ── */
     "cat.arctic.subtitle": "Photography of Arctic Landscapes",
@@ -120,6 +123,7 @@ const TRANSLATIONS = {
     "cat.landscapes.subtitle": "Landscapes and Nature",
     "cat.portraits.subtitle": "Portrait Photography",
     "cat.other.subtitle": "Other Works",
+    "cat.interiors.subtitle": "Interior and Architectural Photography",
 
     /* ── footer ── */
     "footer.copy": "© {YEAR} Szymon Machnio",
