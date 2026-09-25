@@ -37,19 +37,19 @@ const CATEGORIES = {
     titleKey: "cat.landscapes.name",
     subtitleKey: "cat.landscapes.subtitle",
     folder: "landscapes",
-    count: 14
+    count: 15
   },
   portraits: {
     titleKey: "cat.portraits.name",
     subtitleKey: "cat.portraits.subtitle",
     folder: "portraits",
-    count: 16
+    count: 17
   },
   other: {
     titleKey: "cat.other.name",
     subtitleKey: "cat.other.subtitle",
     folder: "other",
-    count: 20
+    count: 24
   },
   interiors: {
     titleKey: "cat.interiors.name",
@@ -73,7 +73,8 @@ const SPECIAL_FILES = {
   ],
   landscapes: [
     "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth",
-    "eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth"
+    "eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth",
+    "seventeenth"
   ]
 };
 
