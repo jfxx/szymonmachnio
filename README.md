@@ -1,4 +1,4 @@
-# Szymon Machnio — Portfolio fotograficzne
+# [Szymon Machnio](https://szymonmachnio.com/) — Portfolio fotograficzne
 
 Portfolio fotograficzne Szymona Machnio — portrety, krajobrazy, astrofotografia i inne prace. Strona statyczna zbudowana bez frameworków ani bundlerów.
 
